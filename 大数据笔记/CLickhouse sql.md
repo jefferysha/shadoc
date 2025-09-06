@@ -1,5 +1,5 @@
 ```sql
-clickhouse-client --query=" 111
+clickhouse-client --query=" 1112222
 SELECT
   dt AS \`日期\`,
   etl_date AS \`ETL日期\`,
