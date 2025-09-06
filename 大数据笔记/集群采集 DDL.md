@@ -29,84 +29,30 @@ DROP TABLE IF EXISTS cluster_metadata;
 -- =============================================================================
 
 -- 集群元数据表
-CREATE TABLE cluster_metadata (
-    cluster_id String COMMENT '集群唯一标识',
-    cluster_name String COMMENT '集群名称',
-    cluster_type Enum8('HADOOP'=1, 'SPARK'=2, 'KAFKA'=3, 'ELASTICSEARCH'=4, 'HBASE'=5, 'MIXED'=6) COMMENT '集群类型',
-    environment Enum8('PROD'=1, 'TEST'=2, 'DEV'=3, 'STAGING'=4) COMMENT '环境类型',
-    business_domain String COMMENT '业务域',
-    owner_team String COMMENT '负责团队',
-    description String COMMENT '集群描述',
-    location String COMMENT '机房位置',
-    version String COMMENT '集群版本',
-    status Enum8('ACTIVE'=1, 'INACTIVE'=2, 'MAINTENANCE'=3, 'DECOMMISSIONED'=4) DEFAULT 'ACTIVE' COMMENT '集群状态',
-    created_date DateTime DEFAULT now() COMMENT '创建时间',
-    updated_date DateTime DEFAULT now() COMMENT '更新时间'
-) ENGINE = MergeTree()
-ORDER BY (cluster_id)
-PRIMARY KEY (cluster_id);
-
--- 集群功能配置表
-CREATE TABLE cluster_features (
-    cluster_id String COMMENT '集群ID',
-    feature_type Enum8('YARN'=1, 'HDFS'=2, 'SPARK'=3, 'HBASE'=4, 'HIVE'=5, 'KAFKA'=6, 'ZOOKEEPER'=7, 'ELASTICSEARCH'=8) COMMENT '功能类型',
-    is_enabled UInt8 DEFAULT 1 COMMENT '是否启用',
-    config_params String COMMENT '功能配置参数JSON',
-    feature_version String COMMENT '功能版本',
-    created_date DateTime DEFAULT now() COMMENT '创建时间',
-    updated_date DateTime DEFAULT now() COMMENT '更新时间'
-) ENGINE = MergeTree()
-ORDER BY (cluster_id, feature_type)
-PRIMARY KEY (cluster_id, feature_type);
-
+CREATE TABLE orion.cluster_metadata (
+        cluster_id UInt64,
+        cluster_name String,
+        cluster_type String,
+        hostname String,
+        ip String,
+        sn String,
+        node_config String,
+        cpu_cores Nullable(UInt32),
+        memory_gb Nullable(UInt32),
+        disk_total_tb Nullable(Float64),
+        bandwidth_gbps Nullable(Float64),
+        brand String,
+        device_status String,
+        warranty_end Nullable(DateTime),
+        warranty_start Nullable(DateTime),
+        created_date DateTime DEFAULT now(),
+        updated_date DateTime DEFAULT now()
+    )
+    ENGINE = MergeTree()
+    ORDER BY (cluster_id, hostname, ip)
 -- =============================================================================
 -- 第二层：节点资产层
 -- =============================================================================
-
--- 节点资产表
-CREATE TABLE node_assets (
-    node_id String COMMENT '节点唯一标识',
-    ip_address String COMMENT 'IP地址',
-    hostname String COMMENT '主机名',
-    cluster_id String COMMENT '所属集群ID',
-    node_role Enum8('MASTER'=1, 'WORKER'=2, 'EDGE'=3, 'GATEWAY'=4, 'STANDALONE'=5) COMMENT '节点角色',
-    node_services String COMMENT '节点服务列表JSON',
-    asset_status Enum8('ACTIVE'=1, 'INACTIVE'=2, 'MAINTENANCE'=3, 'DECOMMISSIONED'=4, 'FAULTY'=5) DEFAULT 'ACTIVE' COMMENT '资产状态',
-    
-    -- 硬件规格
-    cpu_cores UInt16 COMMENT 'CPU核数',
-    memory_gb UInt16 COMMENT '内存容量GB',
-    disk_config String COMMENT '磁盘配置信息JSON',
-    network_config String COMMENT '网络配置信息JSON',
-    
-    -- 资产管理信息
-    asset_tag String COMMENT '资产标签',
-    rack_location String COMMENT '机架位置',
-    purchase_date Date COMMENT '采购日期',
-    warranty_expire_date Date COMMENT '保修到期日期',
-    vendor String COMMENT '厂商',
-    model String COMMENT '型号',
-    
-    created_date DateTime DEFAULT now() COMMENT '创建时间',
-    updated_date DateTime DEFAULT now() COMMENT '更新时间'
-) ENGINE = MergeTree()
-ORDER BY (cluster_id, node_id)
-PRIMARY KEY (node_id);
-
--- 节点服务部署表
-CREATE TABLE node_service_deployments (
-    node_id String COMMENT '节点ID',
-    service_name String COMMENT '服务名称',
-    service_type Enum8('NAMENODE'=1, 'DATANODE'=2, 'RESOURCEMANAGER'=3, 'NODEMANAGER'=4, 'JOURNALNODE'=5, 'ZOOKEEPER'=6, 'HBASE_MASTER'=7, 'HBASE_REGIONSERVER'=8, 'OTHER'=9) COMMENT '服务类型',
-    service_version String COMMENT '服务版本',
-    service_status Enum8('RUNNING'=1, 'STOPPED'=2, 'ERROR'=3, 'STARTING'=4, 'STOPPING'=5) DEFAULT 'RUNNING' COMMENT '服务状态',
-    config_params String COMMENT '服务特定配置JSON',
-    port_config String COMMENT '端口配置JSON',
-    deploy_date DateTime DEFAULT now() COMMENT '部署时间',
-    updated_date DateTime DEFAULT now() COMMENT '更新时间'
-) ENGINE = MergeTree()
-ORDER BY (node_id, service_name)
-PRIMARY KEY (node_id, service_name);
 
 -- =============================================================================
 -- 第三层：监控指标层 - 集群级别指标
@@ -242,25 +188,30 @@ ORDER BY (node_id, process_date, etl_time)
 PRIMARY KEY (node_id, process_date, etl_time);
 
 -- 节点系统资源指标
-CREATE TABLE node_system_metrics (
-    node_id String COMMENT '节点ID',
-    ip_address String COMMENT 'IP地址',
-    cpu_usage Decimal32(2) DEFAULT 0.00 COMMENT 'CPU使用率',
-    load_usage Decimal64(3) DEFAULT 0.000 COMMENT '负载使用率',
-    mem_usage Decimal32(2) DEFAULT 0.00 COMMENT '内存使用率',
-    disk_iops Decimal64(3) DEFAULT 0.000 COMMENT '磁盘IOPS',
-    disk_io_rate Decimal64(3) DEFAULT 0.000 COMMENT '磁盘IO速率',
-    disk_usage Decimal32(2) DEFAULT 0.00 COMMENT '磁盘使用率',
-    disk_usage_iowait Decimal32(2) DEFAULT 0.00 COMMENT '磁盘IO等待率',
-    network_bandwidth Decimal64(3) DEFAULT 0.000 COMMENT '网络带宽',
-    network_loss_rate Decimal32(4) DEFAULT 0.0000 COMMENT '网络丢包率',
-    etl_time DateTime COMMENT 'ETL时间',
-    process_date Date COMMENT '处理日期'
-) ENGINE = MergeTree()
-PARTITION BY toYYYYMM(process_date)
-ORDER BY (node_id, process_date, etl_time)
-PRIMARY KEY (node_id, process_date, etl_time);
-
+    CREATE TABLE IF NOT EXISTS orion.node_system_metrics (
+        id UInt64,
+        ip String,
+        hostname String,
+        cpu_usage Nullable(Float64),
+        memory_usage Nullable(Float64),
+        load1 Nullable(Float64),
+        disk_iops Nullable(Float64),
+        disk_read_mib_s Nullable(Float64),
+        disk_write_mib_s Nullable(Float64),
+        disk_usage Nullable(Float64),
+        disk_iowait Nullable(Float64),
+        net_recv_mib_s Nullable(Float64),
+        net_transmit_mib_s Nullable(Float64),
+        net_recv_drop_percent Nullable(Float64),
+        net_transmit_drop_percent Nullable(Float64),
+        disk_capacity_detail Nullable(String),
+        etl_date Date,
+        ts DateTime,
+    )
+    ENGINE = MergeTree()
+    PARTITION BY toYYYYMM(etl_date)
+    ORDER BY (etl_date, ip)
+    SETTINGS index_granularity = 8192
 -- =============================================================================
 -- 向后兼容视图
 -- =============================================================================
