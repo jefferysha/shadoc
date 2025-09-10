@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "临时共享笔记/1.md",
+                "file": "conflict-files-obsidian-git.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1"
+              "title": "conflict-files-obsidian-git"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "临时共享笔记/1.md",
+                "file": "conflict-files-obsidian-git.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1 的大纲"
+              "title": "conflict-files-obsidian-git 的大纲"
             }
           },
           {
@@ -182,10 +182,10 @@
   },
   "active": "40a3265827beffea",
   "lastOpenFiles": [
-    "后端笔记/智能云图库-shapic/项目初始化.md",
     "临时共享笔记/1.md",
-    "后端笔记/智能云图库-shapic/项目选型.md",
     "conflict-files-obsidian-git.md",
+    "后端笔记/智能云图库-shapic/项目初始化.md",
+    "后端笔记/智能云图库-shapic/项目选型.md",
     "临时共享笔记",
     "未命名.md",
     "后端笔记/智能云图库-shapic",
