@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大数据笔记/CLickhouse sql.md",
+                "file": "临时共享笔记/1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLickhouse sql"
+              "title": "1"
             }
           }
         ]
@@ -182,10 +182,13 @@
   },
   "active": "40a3265827beffea",
   "lastOpenFiles": [
+    "大数据笔记/集群采集 DDL.md",
+    "临时共享笔记/1.md",
+    "临时共享笔记",
+    "大数据笔记/CLickhouse sql.md",
     "工具信息/git.md",
     "大数据笔记/存储统计sql.md",
     "工具信息",
-    "大数据笔记/集群采集 DDL.md",
     "前端笔记/TS笔记.md",
     "前端笔记/Editor config.md",
     "大数据笔记/集群连接信息.md",
