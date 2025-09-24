@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,8 +182,9 @@
   },
   "active": "ab1ff73f76dcb8db",
   "lastOpenFiles": [
-    "大数据笔记/jy/国内信息.md",
+    "大数据笔记/集群采集 DDL.md",
     "大数据笔记/jy/海外大数据信息.md",
+    "大数据笔记/jy/国内信息.md",
     "大数据笔记/jy",
     "后端笔记/智能云图库-shapic/项目初始化.md",
     "后端笔记/智能云图库-shapic/项目选型.md",
@@ -196,7 +197,6 @@
     "工具信息/git.md",
     "大数据笔记/存储统计sql.md",
     "工具信息",
-    "大数据笔记/集群采集 DDL.md",
     "前端笔记/TS笔记.md",
     "前端笔记/Editor config.md",
     "大数据笔记/集群连接信息.md",
