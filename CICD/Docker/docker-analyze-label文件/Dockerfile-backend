@@ -1,0 +1,21 @@
+# 构建后端镜像
+FROM maven:3-eclipse-temurin-8-alpine AS backend-builder
+
+WORKDIR /app
+
+COPY backend/src ./src
+COPY backend/pom.xml ./
+COPY backend/settings.xml /root/.m2/
+
+RUN mvn clean package -DskipTests -P aliyun
+
+# 启动容器
+FROM eclipse-temurin:8-jre-alpine
+
+WORKDIR /app
+
+COPY --from=backend-builder /app/target/label-base-1.0.0.jar ./
+
+ENV TZ="Asia/Shanghai"
+
+CMD ["java", "-jar", "label-base-1.0.0.jar"]

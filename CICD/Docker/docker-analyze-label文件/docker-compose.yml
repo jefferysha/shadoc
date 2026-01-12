@@ -1,0 +1,39 @@
+services:
+  label-base-backend:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-backend
+    container_name: label-base-backend
+    restart: unless-stopped
+    networks:
+      - label-base-network
+  label-base-frontend:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-frontend
+    container_name: label-base-frontend
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+    networks:
+      - label-base-network
+  label-base-agent:
+    build:
+      context: ../../metrics_aisvc-app
+      dockerfile: Dockerfile-local
+    container_name: label-base-agent
+    restart: unless-stopped
+    networks:
+      - label-base-network
+  analytics-frontend:
+    build:
+      context: ../../metrics_aisvc-app
+      dockerfile: Dockerfile-frontend-local
+    container_name: analytics-frontend
+    restart: unless-stopped
+    networks:
+      - label-base-network
+
+networks:
+  label-base-network:
+    driver: bridge

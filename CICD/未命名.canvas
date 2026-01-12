@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"08eb0ef2599ed644","type":"text","text":"------测试环境 \ncd label/label-analyze-master/backend/src/main/resources/\nvim application-dev.yaml\ncd label/label-analyze-master/docker/\ndocker compose down --rmi all\ndocker compose up -d","x":-560,"y":-560,"width":427,"height":263},
+		{"id":"6d2cda1c8b413fdf","x":-560,"y":-240,"width":451,"height":162,"type":"text","text":"------添加端口转发 app04\ncd /opt/port-forward/\nvim ports.conf\n./forward.sh -c\n./forward.sh ports.conf"}
+	],
+	"edges":[]
+}
