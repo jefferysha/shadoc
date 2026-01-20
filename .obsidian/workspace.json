@@ -28,12 +28,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "运维笔记/常用命令.md",
+                "file": "AI/AI编程/claude code/问题列表.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常用命令"
+              "title": "问题列表"
             }
           },
           {
@@ -78,13 +78,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "运维笔记/常用命令.md",
+                "file": "AI/AI编程/claude code/问题列表.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "常用命令 的大纲"
+              "title": "问题列表 的大纲"
             }
           }
         ]
@@ -144,7 +144,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 306.5
   },
   "right": {
     "id": "72672ad48561bee4",
@@ -232,7 +232,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 305.5
+    "width": 467.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -248,52 +248,51 @@
   },
   "active": "3352f27440fb5099",
   "lastOpenFiles": [
-    "huggingface.md",
-    "运维笔记/常用命令.md",
-    "CICD/未命名.canvas",
-    "大数据笔记/jy/国内账号信息.md",
-    "运维笔记",
-    "大数据笔记/jy/airflow 排查.md",
+    "CICD/其他命令.canvas",
+    "AI/AI编程/claude code/问题列表.md",
+    "AI/AI编程/claude code",
     "大数据笔记/jy/海外大数据账号.md",
+    "大数据笔记/jy/国内账号信息.md",
+    "前端笔记/React/React19 + Typescript 基础进阶与实战完全指南.md",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/pages/Borad/index.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/components/ui/button.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/components/Board/index.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/components/Board/Task.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/components/Board/KanbanGroup.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/stores/useKanban.ts",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/router/index.tsx",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/lib/utils.ts",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/pages/Borad",
+    "前端笔记/React/react19-typescript-guide/3.kanban/src/assets/react.svg",
+    "前端笔记/React/react19-typescript-guide/3.kanban/public/vite.svg",
+    "前端笔记/React/react19-typescript-guide/3.kanban/dist/vite.svg",
+    "前端笔记/React/react19-typescript-guide/3.kanban/README.md",
+    "前端笔记/React/react19-typescript-guide/1.basic/src/assets/react.svg",
+    "前端笔记/React/react19-typescript-guide/1.basic/dist/assets/react-CHdo91hT.svg",
+    "前端笔记/React/react19-typescript-guide/2.features/src/assets/react.svg",
+    "前端笔记/React/react19-typescript-guide/1.basic/public/vite.svg",
+    "前端笔记/React/react19-typescript-guide/1.basic/dist/vite.svg",
+    "前端笔记/React/react19-typescript-guide/2.features/public/vite.svg",
+    "前端笔记/React/react19-typescript-guide/2.features/dist/vite.svg",
+    "前端笔记/React/react19-typescript-guide/1.basic/README.md",
+    "前端笔记/React/react19-typescript-guide/2.features/README.md",
+    "大数据笔记/CLickhouse sql.md",
+    "大数据笔记/集群连接信息.md",
+    "大数据笔记/集群采集 DDL.md",
     "大数据笔记/存储统计sql.md",
     "大数据笔记/海外 ddl.md",
+    "AI/AI编程/OpenSpec.md",
+    "大数据笔记/jy/国内信息.md",
+    "大数据笔记/jy/airflow 排查.md",
+    "运维笔记/常用命令.md",
+    "临时共享笔记/1.md",
+    "未命名.md",
+    "huggingface.md",
     "前端笔记/react 1/01_React基础与工程化.md",
     "CICD/Docker/Docker_Enterprise_Guide.md",
-    "大数据笔记/jy/国内信息.md",
-    "大数据笔记/集群采集 DDL.md",
-    "大数据笔记/集群连接信息.md",
-    "大数据笔记/CLickhouse sql.md",
     "前端笔记/react 1/03_组件_属性_状态.md",
     "前端笔记/react 1/02_JSX语法与编译原理.md",
     "前端笔记/react 1/07_生态与React18特性.md",
-    "前端笔记/react 1/06_Hooks深度解析.md",
-    "前端笔记/react 1/05_列表渲染与表单.md",
-    "前端笔记/react 1/04_事件处理与交互.md",
-    "前端笔记/react 1",
-    "前端笔记/React/React【01】.md",
-    "前端笔记/React",
-    "CICD/Docker/docker-analyze-label文件/nginx.conf",
-    "CICD/Docker/docker-analyze-label文件/proxy_params",
-    "CICD/NGINX/【10】Nginx专业深度指南.md",
-    "CICD/NGINX/【7】nginx高可用及Keepalived实战.md",
-    "CICD/NGINX/【4】ServerName匹配规则.md",
-    "CICD/NGINX/【2】Nginx的的目录结构,基本运行原理及基本配置文件.md",
-    "CICD/NGINX/【1】Nginx的安装部署.md",
-    "CICD/Docker/Docker部署SpringBoot案例详解.md",
-    "CICD/Docker/docker-analyze-label文件/Dockerfile-frontend",
-    "CICD/Docker/docker-analyze-label文件/Dockerfile-backend",
-    "CICD/Docker/docker-analyze-label文件/docker-compose.yml",
-    "CICD/Docker/docker-analyze-label文件",
-    "Pasted image 20251228163202.png",
-    "Pasted image 20251228163458.png",
-    "Pasted image 20251228163348.png",
-    "Pasted image 20251228163226.png",
-    "Pasted image 20251228163449.png",
-    "Pasted image 20251228163441.png",
-    "Pasted image 20251228163342.png",
-    "Pasted image 20251228163255.png",
-    "Pasted image 20251228163250.png",
-    "Pasted image 20251228163209.png",
-    "CICD/Docker"
+    "前端笔记/react 1/06_Hooks深度解析.md"
   ]
 }
